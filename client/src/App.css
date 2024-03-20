@@ -1,6 +1,6 @@
 body {
     background-image: url("/src/assets/background.jpg");
-    
+    font-family: "Kalam", cursive;
    }
 
 .userForms{
@@ -9,7 +9,6 @@ background-color: #f8f6f0d4;
 
 #userFormsTitle{
     color:#00a19b ;
-    font-family: "Kalam", cursive;
     font-weight: 400;
     font-style: normal;
     font-size: 30px;
@@ -20,7 +19,6 @@ background-color: #f8f6f0d4;
     border-radius: 10px;
     color: white;
     margin: 20px;
-    font-family: "Kalam", cursive;
     font-weight: 400;
     font-style: normal;
     font-size: 20px;
@@ -30,7 +28,6 @@ background-color: #f8f6f0d4;
 .userFormInputs{
     background-color: #f8f6f01a;
     border-radius: 20px;
-    font-family: "Kalam", cursive;
     font-weight: 400;
     font-style: normal;
     padding: 5px;
