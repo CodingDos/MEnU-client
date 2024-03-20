@@ -7,8 +7,8 @@ function Nav() {
   return (
     <div>
     <nav className="loggedInNav">
-      <NavLink to="/feed" className="navTitles">Home</NavLink>
-      <NavLink to="/dashboard" className="navTitles">Dashboard</NavLink>
+      <NavLink to="/home" className="navTitles">Home</NavLink>
+      <NavLink to="/db" className="navTitles">Dashboard</NavLink>
       <button className="signOutButton">Sign Out</button>
     </nav>
 
