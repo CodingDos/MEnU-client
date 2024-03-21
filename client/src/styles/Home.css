@@ -1,6 +1,8 @@
 .container{
     background-color: white;
-    box-shadow: black 5px 5px 5px 5px;
+    height: 1000vh;
+    box-shadow: black 3px 3px 3px 3px;
+   
     
 }
 
@@ -8,7 +10,7 @@
     background-color: #fef8e3a4;
     width: 70%;
     text-align: center;
-    box-shadow: black 5px 5px 5px 5px;
+    box-shadow: black 1px 1px 4px 2px;
 }
 
 .recipeFeed{
@@ -20,8 +22,6 @@
 .recipeHeader{
     display: flex;
     margin: 5%;
-    
-   
 }
 
 li{
@@ -65,5 +65,8 @@ li{
     margin: 0 auto;
     width: 50%;
     background-color: white;
+    box-shadow: black 1px 1px 2px 1px;
+   
 }
+
 

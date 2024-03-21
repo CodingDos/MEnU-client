@@ -1,0 +1,48 @@
+import api from "./apiConfing.js";
+
+export const getRecipe = async () => {
+  try {
+    const response = await api.get("/recipes");
+
+    return response.data;
+  } catch (error) {
+    console.error("Error Getting all Recipes:", error);
+  }
+};
+
+
+export const getRecipeById = async (id) => {
+    try{
+     const response = await api.get(`/recipes/id/${id}`)
+     return response.data
+    } catch(error){
+     console.error("Error Getting the Recipe:", error)
+    }
+ }
+
+ export const createRecipe = async (recipeData) => {
+    try{
+     const response = await api.post(`/recipes/`, recipeData)
+     return response.data
+    } catch(error){
+     console.error("Error", error)
+    }
+ }
+
+ export const editRecipe = async (id , recipeData) => {
+    try{
+     const response = await api.put(`/recipes/${id}`, recipeData)
+     return response.data
+    } catch(error){
+     console.error("Error", error)
+    }
+ }
+
+ export const deleteRecipe = async (id) => {
+    try{
+     const response = await api.delete(`/recipes/${id}`)
+     return response.data
+    } catch(error){
+     console.error("Error", error)
+    }
+ }

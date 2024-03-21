@@ -50,7 +50,6 @@ function Home() {
             </div>
             <div className="recipeComments">
                 <p>TEST COMMENTssss</p>
-
               </div>
           
           
