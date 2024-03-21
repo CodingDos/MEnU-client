@@ -30,12 +30,13 @@ function Home() {
           </div>
         </div>
         <div className="recipeFeed">
+          
           <div className="recipe">
             <div className="recipeHeader">
               <img className="userIcon" src={john} alt="User Image"></img>
-              <p>Emmy Squared Burger </p>
             </div>
-            <img src={burger} alt="Recipe Image"></img>
+            <p className="recipeFeedTitle">Emmy Squared Burger </p>
+            <img className= "recipeImage" src={burger} alt="Recipe Image"></img>
             <div className="ingredientsAndMeasurements">
               <ul className="ingredients">
                 <h5 className="listTitle">Ingredients</h5>
@@ -45,7 +46,14 @@ function Home() {
                 <h5 className="listTitle">Measurement</h5>
                 <li>1 Burger</li>
               </ul>
+            
             </div>
+            <div className="recipeComments">
+                <p>TEST COMMENTssss</p>
+
+              </div>
+          
+          
           </div>
         </div>
       </div>

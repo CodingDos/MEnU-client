@@ -1,21 +1,25 @@
 .container{
     background-color: white;
+    box-shadow: black 5px 5px 5px 5px;
+    
 }
 
 .recipe{
     background-color: #fef8e3a4;
     width: 70%;
     text-align: center;
+    box-shadow: black 5px 5px 5px 5px;
 }
 
 .recipeFeed{
     display: flex;
     justify-content: center;
+    
 }
 
 .recipeHeader{
     display: flex;
-    margin: 20px;
+    margin: 5%;
     
    
 }
@@ -32,11 +36,34 @@ li{
 }
 
 .userIcon{
-    width: 10%;
+    width: 16%;
     border-radius: 50%;
 }
 
+
+
 .listTitle{
-    margin: 10px;
+    margin: 6%;
+    text-decoration: underline;
+
+
+}
+
+.recipeFeedTitle{
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 auto;
+    text-decoration: underline;
+
+}
+
+.recipeImage{
+    margin-top: 20px;
+}
+
+.recipeComments{
+    margin: 0 auto;
+    width: 50%;
+    background-color: white;
 }
 
