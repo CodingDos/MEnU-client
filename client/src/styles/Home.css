@@ -15,5 +15,28 @@
 
 .recipeHeader{
     display: flex;
-    justify-content: center;
+    margin: 20px;
+    
+   
 }
+
+li{
+    list-style: none;
+    
+}
+
+.ingredientsAndMeasurements{
+    display: flex;
+    justify-content: center;
+
+}
+
+.userIcon{
+    width: 10%;
+    border-radius: 50%;
+}
+
+.listTitle{
+    margin: 10px;
+}
+
