@@ -32,7 +32,7 @@ function Landing(props) {
     try {
       const user = await register(registerForm)
       setUser(user)
-      navigate('/')
+      navigate('/home')
     } catch (error) {
       console.error(error)
       setRegisterForm({

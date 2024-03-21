@@ -1,11 +1,35 @@
-import React from "react";
+import { useState, useEffect } from 'react'
+import { useParams, Link } from "react-router-dom";
+import { getRecipe } from "../services/recipes.js";
 import Nav from "../components/Nav.jsx";
-import { Link } from "react-router-dom";
 import "../styles/Home.css";
 import john from "../assets/john.png";
 import burger from "../assets/Burger.jpg";
 
+
+
 function Home() {
+
+
+  const Recipes = (props) => {
+    const [recipe, setRecipe] = useState(null)
+    const { id } = useParams()
+
+    useEffect(() => {
+      const fetchRecipe = async () => {
+        const recipe = await getRecipe(id)
+        setRecipe(recipe)
+        
+      }
+      fetchRecipe()
+    }, [id])
+  }
+
+  
+
+
+
+
   return (
     <div>
       <div className="container">
