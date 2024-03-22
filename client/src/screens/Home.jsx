@@ -1,34 +1,30 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getRecipe } from "../services/recipes.js";
+import { getRecipes } from "../services/recipes.js";
 import Nav from "../components/Nav.jsx";
 import "../styles/Home.css";
 import john from "../assets/john.png";
 import burger from "../assets/Burger.jpg";
 
-
-
 function Home() {
+  const [recipes, setRecipes] = useState([]);
+  const [isLoaded, setLoaded] = useState(false);
+  const { id } = useParams()
 
 
-  const Recipes = (props) => {
-    const [recipe, setRecipe] = useState(null)
-    const { id } = useParams()
-
-    useEffect(() => {
-      const fetchRecipe = async () => {
-        const recipe = await getRecipe(id)
-        setRecipe(recipe)
-        
-      }
-      fetchRecipe()
-    }, [id])
+  async function fetchRecipes() {
+    const allRecipes = await getRecipes();
+    setRecipes(allRecipes);
+    setLoaded(true)
   }
 
-  
+  useEffect(() => {
+    fetchRecipes();
+  }, []);
 
-
-
+  if (!isLoaded) {
+    return <h1>Loading...</h1>;
+  }
 
   return (
     <div>
@@ -54,30 +50,36 @@ function Home() {
           </div>
         </div>
         <div className="recipeFeed">
-          
-          <div className="recipe">
-            <div className="recipeHeader">
-              <img className="userIcon" src={john} alt="User Image"></img>
-            </div>
-            <p className="recipeFeedTitle">Emmy Squared Burger </p>
-            <img className= "recipeImage" src={burger} alt="Recipe Image"></img>
-            <div className="ingredientsAndMeasurements">
-              <ul className="ingredients">
-                <h5 className="listTitle">Ingredients</h5>
-                <li>Cheeseburger</li>
-              </ul>
-              <ul className="measurements">
-                <h5 className="listTitle">Measurement</h5>
-                <li>1 Burger</li>
-              </ul>
-            
-            </div>
-            <div className="recipeComments">
+          {recipes.map((recipe,index) => (
+            <div className="recipe">
+              <div className="recipeHeader">
+                {/* <img
+                className="userIcon"
+                src={recipe.user.img}
+                alt={recipe.user.name}
+              ></img> */}
+              </div>
+              <p className="recipeFeedTitle">{recipe.Mealname}</p>
+              <img
+                className="recipeImage"
+                src={burger}
+                alt="Recipe Image"
+              ></img>
+              <div className="ingredientsAndMeasurements">
+                <ul className="ingredients">
+                  <h5 className="listTitle">Ingredients</h5>
+                  <li>{recipe.ingredients}</li>
+                </ul>
+                <ul className="measurements">
+                  <h5 className="listTitle">Measurement</h5>
+                  <li>1 Burger</li>
+                </ul>
+              </div>
+              <div className="recipeComments">
                 <p>TEST COMMENTssss </p>
               </div>
-          
-          
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

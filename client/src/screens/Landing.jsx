@@ -81,25 +81,22 @@ function Landing(props) {
     const toggleRegisterForm = registerForm.isError ? 'danger' : ''
     if (registerForm.isError) {
       return (
-        <button type='submit' className={toggleRegisterForm}>
+        <p>
           {registerForm.errorMsg}
-        </button>
+        </p>
       )
-    } else {
-      return <button type='submit'>Register</button>
-    }
+    } 
   }
 
   const renderLoginError = () => {
     const toggleLoginForm = loginForm.isError ? 'danger' : ''
     if (loginForm.isError) {
       return (
-        <button type='submit' className={toggleLoginForm}>
+        <p>
           {loginForm.errorMsg}
-        </button>
+        </p>
       )
-    } else {
-      return <button type='submit'>Login</button>
+    
     }
   }
 
@@ -235,8 +232,7 @@ function Landing(props) {
               className ="col-3 p-3"
               id="userForms"
             >
-              <h2 id="userFormsTitle" className="text text-center">
-                Login
+              <h2 id="userFormsTitle" className="text text-center">Login
               </h2>
               <div className="form-group">
                 <label htmlFor="username"></label>
@@ -259,6 +255,14 @@ function Landing(props) {
                   onChange={loginHandleChange}
                   className="userFormInputs"
                 />
+                <div className="text-center">
+                <input
+                  id="userFormsButtons"
+                  type="submit"
+                  value="Log In"
+                  className="btn mt-3"
+                />
+              </div>
               </div>
               {renderLoginError()}
             </form>
@@ -273,11 +277,3 @@ export default Landing;
 
 
 
-{/* <div class="text-center">
-<input
-  id="userFormsButtons"
-  type="submit"
-  value="Login"
-  class="btn btn-center mt-3"
-/>
-</div> */}

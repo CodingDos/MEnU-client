@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { verify } from "./services/users.js";
-
 import Home from "./screens/Home.jsx";
 import Nav from "./components/Nav.jsx";
 import Landing from "./screens/Landing.jsx";
