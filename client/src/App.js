@@ -26,6 +26,11 @@ function App() {
 
   return (
     <div className="App">
+      <div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+     </div>
       {location.pathname === "/" ? null : <Nav user={user}/>}
       <Routes>
         <Route path="/" element={<Landing setUser={setUser}/>} />
