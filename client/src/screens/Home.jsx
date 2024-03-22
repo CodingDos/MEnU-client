@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getRecipes } from "../services/recipes.js";
+import { getRecipes} from "../services/recipes.js";
+import { getCommentById} from "../services/comments.js";
 import Nav from "../components/Nav.jsx";
 import "../styles/Home.css";
 import john from "../assets/john.png";
@@ -8,6 +9,7 @@ import burger from "../assets/Burger.jpg";
 
 function Home() {
   const [recipes, setRecipes] = useState([]);
+  const [comment, setComments] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
   const { id } = useParams();
 
@@ -81,6 +83,7 @@ function Home() {
                     ))}
                   </ul>
                 </div>
+                <p>{recipe.calories}</p>
                 <div className="recipeComments">
                   <p>TEST COMMENTssss </p>
                 </div>

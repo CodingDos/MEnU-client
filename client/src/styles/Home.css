@@ -2,6 +2,9 @@
     background-color: white;
     height: 1000vh;
     box-shadow: black 3px 3px 3px 3px;
+    font-family: "Kalam", cursive;
+    text-shadow: white 2px 2px 2px 2px;
+    
    
     
 }
@@ -59,19 +62,21 @@ li{
 .listTitle{
     margin-top: 6%;
     text-decoration: underline;
+    font-weight: 600;
 
 
 }
 
 .recipeFeedTitle{
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     text-decoration: underline;
     text-transform: capitalize;
 }
 
 .recipeImage{
     width: 50%;
+    box-shadow: black 1px 1px 1px 1px;
 }
 
 .recipeComments{
