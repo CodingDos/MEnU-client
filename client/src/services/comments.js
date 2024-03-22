@@ -11,18 +11,18 @@ export const getComments = async () => {
 };
 
 
-export const getCommentById = async (id) => {
+export const getCommentById = async (id, recipeId) => {
     try{
-     const response = await api.get(`/users/id/${id}`)
+     const response = await api.get(`/comment/${recipeId}`)
      return response.data
     } catch(error){
      console.error("Error Getting the Comment:", error)
     }
  }
 
- export const createComment  = async (commentData) => {
+ export const createComment  = async (commentData, recipeId) => {
     try{
-     const response = await api.post(`/comments/`, commentData)
+     const response = await api.post(`/comment/create/${recipeId}`, commentData)
      return response.data
     } catch(error){
      console.error("Error", error)

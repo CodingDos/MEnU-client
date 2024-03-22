@@ -4,11 +4,10 @@ import { getRecipes} from "../services/recipes.js";
 import { getCommentById} from "../services/comments.js";
 import Nav from "../components/Nav.jsx";
 import "../styles/Home.css";
-import john from "../assets/john.png";
-import burger from "../assets/Burger.jpg";
 import icon from "../assets/userIcon.jpg"
+import Comments from "../components/Comments.jsx";
 
-function Home() {
+function Home({user}) {
   const [recipes, setRecipes] = useState([]);
   const [comment, setComments] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
@@ -54,14 +53,14 @@ function Home() {
         <div className="recipeFeed">
           {recipes.length > 0 &&
             recipes.map((recipe, index) => (
-              console.log(recipe),
+  
               <div className="recipe">
                 <div className="recipeHeader">
-                  
+                
                   <img
                     className="userIcon"
                     
-                    src={recipe?.userId?.img === null ? {icon} : recipe?.userId?.img}
+                    src={recipe?.userId?.img === undefined ? icon : recipe?.userId?.img}
 
                        //}
                   
@@ -94,11 +93,22 @@ function Home() {
                 </div>
                 <p>{recipe.calories}</p>
                 <div className="recipeComments">
-                  <p>TEST COMMENTssss </p>
+                {recipe.comments.map((comment) => (
+                      <p>{comment.comment}</p>
+                    ))
+                    
+                    }
+                </div>
+                <div>
+                  <Comments comment={comment} setComment={setComments} recipeId ={recipe._id} userId = {user.id} />
                 </div>
               </div>
+              
+              
             ))}
         </div>
+        
+        
       </div>
     </div>
   );

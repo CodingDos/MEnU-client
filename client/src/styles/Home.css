@@ -92,9 +92,12 @@ li{
 
 .recipeComments{
     margin: 0 auto;
+    height: 10%;
     width: 50%;
     background-color: white;
+    color: black;
     box-shadow: black 1px 1px 2px 1px;
+    font-size: 20px;
    
 }
 
