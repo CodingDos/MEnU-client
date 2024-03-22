@@ -51,6 +51,7 @@ function Home() {
         <div className="recipeFeed">
           {recipes.length > 0 &&
             recipes.map((recipe, index) => (
+              console.log(recipe),
               <div className="recipe">
                 <div className="recipeHeader">
                   <img
@@ -59,7 +60,7 @@ function Home() {
                     alt={recipe?.user?.name}
                   ></img>
                 </div>
-                <p className="recipeFeedTitle">{recipe.Mealname}</p>
+                <p className="recipeFeedTitle">{recipe.mealName}</p>
                 <img
                   className="recipeImage"
                   src={recipe.image}
