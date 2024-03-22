@@ -41,7 +41,7 @@
     font-size: 45px;
     text-align: center;
     padding-top: 20px;
-    background-image: url('/Users/mac/seb/projects/Group_Project/MEnU-client/client/src/assets/Burger.jpg');
+    background-image: url("../assets/Burger.jpg");
 
     background-position: center;
     background-repeat: no-repeat;
