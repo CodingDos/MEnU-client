@@ -2,7 +2,7 @@ import api from "./apiConfing.js";
 
 export const getRecipes = async () => {
   try {
-    const response = await api.get("/recipes");
+    const response = await api.get("/recipe");
 
     return response.data;
   } catch (error) {

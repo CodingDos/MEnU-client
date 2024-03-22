@@ -9,13 +9,12 @@ import burger from "../assets/Burger.jpg";
 function Home() {
   const [recipes, setRecipes] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
-  const { id } = useParams()
-
+  const { id } = useParams();
 
   async function fetchRecipes() {
     const allRecipes = await getRecipes();
     setRecipes(allRecipes);
-    setLoaded(true)
+    setLoaded(true);
   }
 
   useEffect(() => {
@@ -29,7 +28,7 @@ function Home() {
   return (
     <div>
       <div className="container">
-        <div>
+        {/* <div> Handle this LATER*******
           <div
             id="recipeSearch"
             className="h-100 d-flex align-items-center justify-content-center"
@@ -45,41 +44,47 @@ function Home() {
               id="userFormsButtons"
               type="Submit"
               value="Submit"
-              class="btn btn-center mt-3"
+              className="btn btn-center mt-3"
             />
           </div>
-        </div>
+        </div> */}
         <div className="recipeFeed">
-          {recipes.map((recipe,index) => (
-            <div className="recipe">
-              <div className="recipeHeader">
-                {/* <img
-                className="userIcon"
-                src={recipe.user.img}
-                alt={recipe.user.name}
-              ></img> */}
+          {recipes.length > 0 &&
+            recipes.map((recipe, index) => (
+              <div className="recipe">
+                <div className="recipeHeader">
+                  <img
+                    className="userIcon"
+                    src={recipe?.user?.img}
+                    alt={recipe?.user?.name}
+                  ></img>
+                </div>
+                <p className="recipeFeedTitle">{recipe.Mealname}</p>
+                <img
+                  className="recipeImage"
+                  src={recipe.image}
+                  alt={recipe.name}
+                ></img>
+                <div className="ingredientsAndMeasurements">
+                  <ul className="ingredients">
+                    <h5 className="listTitle">Ingredients</h5>
+
+                    {recipe.ingredients.map((ingredient) => (
+                      <li>{ingredient.name}</li>
+                    ))}
+                  </ul>
+                  <ul className="measurements">
+                    <h5 className="listTitle">Measurements</h5>
+                    {recipe.ingredients.map((measurement) => (
+                      <li>{measurement.quantity}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="recipeComments">
+                  <p>TEST COMMENTssss </p>
+                </div>
               </div>
-              <p className="recipeFeedTitle">{recipe.Mealname}</p>
-              <img
-                className="recipeImage"
-                src={burger}
-                alt="Recipe Image"
-              ></img>
-              <div className="ingredientsAndMeasurements">
-                <ul className="ingredients">
-                  <h5 className="listTitle">Ingredients</h5>
-                  <li>{recipe.ingredients}</li>
-                </ul>
-                <ul className="measurements">
-                  <h5 className="listTitle">Measurement</h5>
-                  <li>1 Burger</li>
-                </ul>
-              </div>
-              <div className="recipeComments">
-                <p>TEST COMMENTssss </p>
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </div>
