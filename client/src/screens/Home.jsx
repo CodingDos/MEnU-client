@@ -51,34 +51,35 @@ function Home() {
         </div>
         <div className="recipeFeed">
           {recipes.map((recipe,index) => (
-            <div className="recipe">
-              <div className="recipeHeader">
-                {/* <img
-                className="userIcon"
-                src={recipe.user.img}
-                alt={recipe.user.name}
-              ></img> */}
-              </div>
-              <p className="recipeFeedTitle">{recipe.Mealname}</p>
-              <img
-                className="recipeImage"
-                src={burger}
-                alt="Recipe Image"
-              ></img>
-              <div className="ingredientsAndMeasurements">
-                <ul className="ingredients">
-                  <h5 className="listTitle">Ingredients</h5>
-                  <li>{recipe.ingredients}</li>
-                </ul>
-                <ul className="measurements">
-                  <h5 className="listTitle">Measurement</h5>
-                  <li>1 Burger</li>
-                </ul>
-              </div>
-              <div className="recipeComments">
-                <p>TEST COMMENTssss </p>
-              </div>
-            </div>
+            // <div className="recipe">
+            //   <div className="recipeHeader">
+            //     {/* <img
+            //     className="userIcon"
+            //     src={recipe.user.img}
+            //     alt={recipe.user.name}
+            //   ></img> */}
+            //   </div>
+            //   <p className="recipeFeedTitle">{recipe.Mealname}</p>
+            //   <img
+            //     className="recipeImage"
+            //     src={burger}
+            //     alt="Recipe Image"
+            //   ></img>
+            //   <div className="ingredientsAndMeasurements">
+            //     <ul className="ingredients">
+            //       <h5 className="listTitle">Ingredients</h5>
+            //       <li>{recipe.ingredients}</li>
+            //     </ul>
+            //     <ul className="measurements">
+            //       <h5 className="listTitle">Measurement</h5>
+            //       <li>1 Burger</li>
+            //     </ul>
+            //   </div>
+            //   <div className="recipeComments">
+            //     <p>TEST COMMENTssss </p>
+            //   </div>
+            // </div>
+            console.log(recipe)
           ))}
         </div>
       </div>
