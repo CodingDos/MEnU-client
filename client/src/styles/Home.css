@@ -36,8 +36,11 @@
 
 .recipeHeader{
     display: flex;
-    margin: 5%;
+    align-items: center;
+    margin: 2%;
+    
 }
+
 
 li{
     list-style: none;
@@ -53,8 +56,16 @@ li{
 }
 
 .userIcon{
-    width: 16%;
+    width: 10%;
     border-radius: 50%;
+    box-shadow: black 2px 3px;
+}
+
+.userIconTitle{
+    margin: 2%;
+    font-size: x-large;
+    font-weight: 600;
+    text-shadow: white 10px;
 }
 
 

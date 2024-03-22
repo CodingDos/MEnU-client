@@ -6,6 +6,7 @@ import Nav from "../components/Nav.jsx";
 import "../styles/Home.css";
 import john from "../assets/john.png";
 import burger from "../assets/Burger.jpg";
+import icon from "../assets/userIcon.jpg"
 
 function Home() {
   const [recipes, setRecipes] = useState([]);
@@ -56,11 +57,19 @@ function Home() {
               console.log(recipe),
               <div className="recipe">
                 <div className="recipeHeader">
+                  
                   <img
                     className="userIcon"
-                    src={recipe?.user?.img}
-                    alt={recipe?.user?.name}
+                    
+                    src={recipe?.userId?.img === null ? {icon} : recipe?.userId?.img}
+
+                       //}
+                  
+                    
+                    // else do the above
+                    alt={recipe?.userId?.username}
                   ></img>
+                  <p className="userIconTitle">{recipe?.userId?.username}</p>
                 </div>
                 <p className="recipeFeedTitle">{recipe.mealName}</p>
                 <img
