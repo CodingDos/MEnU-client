@@ -9,6 +9,8 @@
   display: flex;
   justify-content: space-evenly;
   background-color: #00a19b;
+  /* background-color: #ffffff3c;  2nd Version */
+  /* box-shadow: white 1px 1px 1px 1px;  2nd Version */
 }
 
 .signOutButton {
@@ -25,10 +27,13 @@
 
 .navTitles {
   color: white;
+  /* color: #f45f56;  2nd Version */
   margin: 10px;
   font-family: "Kalam", cursive;
   font-weight: 500;
   font-style: normal;
   text-decoration: none;
   font-size: 50px;
+  text-shadow: white 2px 2px; /* 2nd Version */
+ 
 }

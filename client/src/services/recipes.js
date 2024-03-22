@@ -1,6 +1,6 @@
 import api from "./apiConfing.js";
 
-export const getRecipe = async () => {
+export const getRecipes = async () => {
   try {
     const response = await api.get("/recipes");
 
