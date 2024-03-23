@@ -1,9 +1,11 @@
 .container {
   background-color: rgba(255, 255, 255, 0.591);
-  height: 1000vh;
+  height: 100vh;
   box-shadow: black 3px 3px 3px 3px;
   font-family: "Kalam", cursive;
   text-shadow: white 2px 2px 2px 2px;
+  overflow-y: auto;
+ 
 }
 
 .recipe {
@@ -26,6 +28,27 @@
   -webkit-box-shadow: inset 1px 1px 0 rgb(0, 0, 0),
     inset 0 -1px 0 rgba(0, 0, 0, 0.07);
 }
+
+.container::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+  
+ .container::-webkit-scrollbar-thumb {
+    background-color: #f45e5600;
+    -webkit-box-shadow: inset 0px 0px 0 rgb(0, 0, 0),
+      inset 0 0px 0 rgba(0, 0, 0, 0);
+  }
+
+
+
+
+
+
+
+
+
+
 
 .recipeFeed {
   display: flex;

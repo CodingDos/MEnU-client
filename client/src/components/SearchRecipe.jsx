@@ -3,6 +3,8 @@ import React from 'react'
 function SearchRecipe() {
   return (
     <div>
+
+
           {/* <div> Handle this SEARCH Functionality LATER*******
           <div
             id="recipeSearch"
