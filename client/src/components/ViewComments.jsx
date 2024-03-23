@@ -17,7 +17,9 @@ function ViewComments() {
         <table className="commentsTable">
   <thead>
     <tr>
-      <th></th>
+       <th>
+        {/* /*leave this empty to avoid dom error */}
+        </th> 
     </tr>
   </thead>
   <tbody>

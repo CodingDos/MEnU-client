@@ -1,33 +1,45 @@
-import React from 'react'
+import { useState } from "react";
+import Modal from "react-modal";
+import "../styles/SearchRecipe.css";
 
-function SearchRecipe() {
+function SearchRecipe({ recipes, setRecipes }) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  
+
   return (
-    <div>
+    <div className="searchRecipeContainer">
+      <button className="searchRecipeSubmitButtonModal" onClick={openModal}>
+        Search For A Recipe
+      </button>
+      <Modal isOpen={modalIsOpen} onRequestClose={closeModal}>
+        <div className="searchRecipeModalHeader">
+          <button className="closeModalButton" onClick={closeModal}>
+            X
+          </button>
+        </div>
+        <h2>Search For a Recipe</h2>
+        <div className="searchRecipeSearch">
+        <input
+          type="text"
+          placeholder="Enter Recipe"
+          value={null}
+          onChange={null}
+        />
+        <button className= "searchRecipeButton" onClick={null}>Search</button>
+        </div>
 
-
-          {/* <div> Handle this SEARCH Functionality LATER*******
-          <div
-            id="recipeSearch"
-            className="h-100 d-flex align-items-center justify-content-center"
-          >
-            <label for="recipeSearch"></label>
-            <input
-              placeholder="Search Recipe"
-              type="text"
-              name="recipeSearch"
-              className="userFormInputs"
-            />
-            <input
-              id="userFormsButtons"
-              type="Submit"
-              value="Submit"
-              className="btn btn-center mt-3"
-            />
-          </div>
-        </div> */}
-      
+      </Modal>
     </div>
-  )
+  );
 }
 
-export default SearchRecipe
+export default SearchRecipe;

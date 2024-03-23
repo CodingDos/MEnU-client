@@ -40,7 +40,8 @@ function Home({ user }) {
   return (
     <div>
       <div className="container">
-        <SearchRecipe />
+        <SearchRecipe  />
+        
 
         <div className="recipeFeed">
           {recipes.length > 0 &&
