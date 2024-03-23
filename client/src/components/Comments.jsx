@@ -1,7 +1,7 @@
 import React from 'react'
-import { useState } from 'react'
 import { createComment } from '../services/comments'
 import { useNavigate } from 'react-router-dom'
+import "../styles/Comments.css"
 
 function Comments({comment, setComment, recipeId, userId}) {
 
@@ -33,8 +33,9 @@ function Comments({comment, setComment, recipeId, userId}) {
   return (
     <div>
       
+      <div className='commentForm'>
         <textarea
-          className='textarea-description'
+          className='commentTextArea'
           rows={10}
           placeholder='Comments'
           value={comment.comment}
@@ -42,7 +43,8 @@ function Comments({comment, setComment, recipeId, userId}) {
           required
           onChange={handleChange}
         />
-        <button type="button" onClick={handleSubmit}>Submit</button>
+        <button className= "submitButtonModal"ctype="button" onClick={handleSubmit}>Submit</button>
+    </div>
     </div>
   )
 }
