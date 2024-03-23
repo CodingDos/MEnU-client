@@ -9,14 +9,7 @@ export const register = async (userData) => {
     const user = jwtDecode(response.data.token);
     return user;
    } catch(error){
-    // Log the error for debugging purposes
-   console.error("Register error:", error);
-   // Transform the error into a user-friendly message or custom error object
-   const errorMessage =
-     error.response?.data?.message || "Login failed due to unexpected error";
-
-   // Optionally, throw a new error with the transformed message or handle it differently
-   throw new Error(errorMessage);
+    throw new Error(error.response.data.error);
    }
 }
 
@@ -48,7 +41,6 @@ export const login = async (credentials) => {
  export const verify = async () => {
    //get token from local storage
    const token = localStorage.getItem("token");
-   console.log(token)
    if (token) {
      const res = await api.get("/user/verify");
      return res.data;
