@@ -40,9 +40,8 @@ function Home({ user }) {
   return (
     <div>
       <div className="container">
-
         <SearchRecipe />
-      
+
         <div className="recipeFeed">
           {recipes.length > 0 &&
             recipes.map((recipe, index) => (
@@ -69,19 +68,17 @@ function Home({ user }) {
                 <div className="ingredientsAndMeasurements">
                   <ul className="ingredients">
                     <h5 className="listTitle">Ingredients</h5>
-
-                    {recipe.ingredients.map((ingredient) => (
-                      <li>{ingredient.name}</li>
+                    {recipe.ingredients.map((ingredient, index) => (
+                      <li key={index}>{ingredient.name}</li>
                     ))}
                   </ul>
                   <ul className="measurements">
                     <h5 className="listTitle">Measurements</h5>
-                    {recipe.ingredients.map((measurement) => (
-                      <li>{measurement.quantity}</li>
+                    {recipe.ingredients.map((measurement, index) => (
+                      <li key={index}>{measurement.quantity}</li>
                     ))}
                   </ul>
                 </div>
-
                 <div className="recipeInstructions">
                   <ol>
                     <h5 className="listTitle">Instructions</h5>
