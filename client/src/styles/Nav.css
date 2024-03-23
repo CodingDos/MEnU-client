@@ -11,6 +11,7 @@
   display: flex;
   justify-content: space-evenly;
   background-color: #00a19b;
+  height: 80px;
   /* background-color: #ffffff3c;  2nd Version */
   /* box-shadow: white 1px 1px 1px 1px;  2nd Version */
 }

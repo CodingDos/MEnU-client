@@ -7,6 +7,7 @@ export const register = async (userData) => {
     localStorage.setItem("token", response.data.token);
     const user = jwtDecode(response.data.token);
     return user;
+
   } catch (error) {
     // Log the error for debugging purposes
     console.error("Register error:", error);
@@ -35,6 +36,7 @@ export const signOut = async () => {
     if (localStorage.getItem("token") === null) {
       throw new Error("No token found");
     }
+
     localStorage.removeItem("token");
     return true;
   } catch (error) {
@@ -51,6 +53,7 @@ export const verify = async () => {
     return res.data;
   }
 };
+
 
 // -- Steven is routing edit user in backend --
 //  export const editUser = async (id , userData) => {
