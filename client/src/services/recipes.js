@@ -31,7 +31,7 @@ export const getRecipeById = async (id) => {
 
  export const editRecipe = async (id , recipeData) => {
     try{
-     const response = await api.put(`/recipes/${id}`, recipeData)
+     const response = await api.put(`/recipe/${id}`, recipeData)
      return response.data
     } catch(error){
      console.error("Error", error)
@@ -40,7 +40,7 @@ export const getRecipeById = async (id) => {
 
  export const deleteRecipe = async (id) => {
     try{
-     const response = await api.delete(`/recipes/${id}`)
+     const response = await api.delete(`/recipe/${id}`)
      return response.data
     } catch(error){
      console.error("Error", error)

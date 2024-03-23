@@ -1,5 +1,5 @@
 .container {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.591);
   height: 1000vh;
   box-shadow: black 3px 3px 3px 3px;
   font-family: "Kalam", cursive;
@@ -120,4 +120,15 @@ li {
   font-family: "Kalam", cursive;
   display: flex;
   justify-content: space-between;
+}
+
+.deleteButton{
+    background-color: #f45e567d;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-style: normal;
+
+
 }

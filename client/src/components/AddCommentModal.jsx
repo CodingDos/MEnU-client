@@ -1,9 +1,9 @@
 import React from 'react'
 import { createComment } from '../services/comments'
 import { useNavigate } from 'react-router-dom'
-import "../styles/Comments.css"
+import "../styles/AddCommentModal.css"
 
-function Comments({comment, setComment, recipeId, userId}) {
+function AddCommentModal({comment, setComment, recipeId, userId, onRequestClose}) {
 
     let navigate = useNavigate()
     // const [comment, setComment] = useState({comment:''}
@@ -25,6 +25,7 @@ function Comments({comment, setComment, recipeId, userId}) {
     await createComment(comment, recipeId)
     console.log(comment)
     navigate('/home')
+    onRequestClose()
   }
 
 
@@ -43,10 +44,10 @@ function Comments({comment, setComment, recipeId, userId}) {
           required
           onChange={handleChange}
         />
-        <button className= "submitButtonModal"ctype="button" onClick={handleSubmit}>Submit</button>
+        <button className= "submitButtonModal" type="button" onClick={handleSubmit}>Submit</button>
     </div>
     </div>
   )
 }
 
-export default Comments
+export default AddCommentModal
