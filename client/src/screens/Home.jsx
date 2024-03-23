@@ -1,21 +1,24 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
 import { getRecipes } from "../services/recipes.js";
-import Nav from "../components/Nav.jsx";
+import { getCommentById } from "../services/comments.js";
+import Comments from "../components/AddCommentModal.jsx";
+import ViewComments from "../components/ViewComments.jsx";
+import SearchRecipe from "../components/SearchRecipe.jsx";
+import icon from "../assets/userIcon.jpg";
+import Modal from "react-modal";
 import "../styles/Home.css";
-import john from "../assets/john.png";
-import burger from "../assets/Burger.jpg";
 
-function Home() {
+function Home({ user }) {
   const [recipes, setRecipes] = useState([]);
+  const [comment, setComments] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
-  const { id } = useParams()
-
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [currentRecipeId, setCurrentRecipeId] = useState(null);
 
   async function fetchRecipes() {
     const allRecipes = await getRecipes();
     setRecipes(allRecipes);
-    setLoaded(true)
+    setLoaded(true);
   }
 
   useEffect(() => {
@@ -26,60 +29,98 @@ function Home() {
     return <h1>Loading...</h1>;
   }
 
+  const openModal = (recipeId) => {
+    setCurrentRecipeId(recipeId);
+  };
+
+  const closeModal = () => {
+    setCurrentRecipeId(null);
+  };
+
   return (
     <div>
       <div className="container">
-        <div>
-          <div
-            id="recipeSearch"
-            className="h-100 d-flex align-items-center justify-content-center"
-          >
-            <label for="recipeSearch"></label>
-            <input
-              placeholder="Search Recipe"
-              type="text"
-              name="recipeSearch"
-              className="userFormInputs"
-            />
-            <input
-              id="userFormsButtons"
-              type="Submit"
-              value="Submit"
-              class="btn btn-center mt-3"
-            />
-          </div>
-        </div>
+        <SearchRecipe />
+
         <div className="recipeFeed">
-          {recipes.map((recipe,index) => (
-            <div className="recipe">
-              <div className="recipeHeader">
-                {/* <img
-                className="userIcon"
-                src={recipe.user.img}
-                alt={recipe.user.name}
-              ></img> */}
+          {recipes.length > 0 &&
+            recipes.map((recipe, index) => (
+              <div className="recipe">
+                <div className="recipeHeader">
+                  <img
+                    className="userIcon"
+                    src={
+                      recipe?.userId?.img === undefined
+                        ? icon
+                        : recipe?.userId?.img
+                    }
+                    alt={recipe?.userId?.username}
+                  ></img>
+                  <p className="userIconTitle">{recipe?.userId?.username}</p>
+                </div>
+                <p className="recipeFeedTitle">{recipe.mealName}</p>
+                <img
+                  className="recipeImage"
+                  src={recipe.image}
+                  alt={recipe.name}
+                ></img>
+                <p>{recipe.calories}</p>
+                <div className="ingredientsAndMeasurements">
+                  <ul className="ingredients">
+                    <h5 className="listTitle">Ingredients</h5>
+                    {recipe.ingredients.map((ingredient, index) => (
+                      <li key={index}>{ingredient.name}</li>
+                    ))}
+                  </ul>
+                  <ul className="measurements">
+                    <h5 className="listTitle">Measurements</h5>
+                    {recipe.ingredients.map((measurement, index) => (
+                      <li key={index}>{measurement.quantity}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="recipeInstructions">
+                  <ol>
+                    <h5 className="listTitle">Instructions</h5>
+                    <li>{recipe.instructions}</li>
+                  </ol>
+                </div>
+                <button
+                  className="modalButton"
+                  onClick={() => openModal(recipe._id)}
+                >
+                  Add a Comment!
+                </button>
+                <ViewComments />
+                {/* comments not being pulled from the db */}
+                <div>
+                  <Modal
+                    isOpen={currentRecipeId === recipe._id}
+                    onRequestClose={closeModal}
+                  >
+                    <div className="closeModalButtonDiv">
+                      <p>Add a Comment!</p>
+                      <button className="closeModalButton" onClick={closeModal}>
+                        X
+                      </button>
+                    </div>
+                    <Comments
+                      recipeId={currentRecipeId}
+                      userId={user.Id}
+                      comment={comment}
+                      setComment={setComments}
+                      onRequestClose={closeModal}
+                    />
+                  </Modal>
+                </div>
+                {console.log(recipe.userId)}
+                {console.log("User:", user.id)}
+                {console.log("Recipe:", recipe.userId._id)}
+                {user.id === recipe.userId._id && (
+                  <button className="deleteButton">Delete Recipe</button>
+                )}
               </div>
-              <p className="recipeFeedTitle">{recipe.Mealname}</p>
-              <img
-                className="recipeImage"
-                src={burger}
-                alt="Recipe Image"
-              ></img>
-              <div className="ingredientsAndMeasurements">
-                <ul className="ingredients">
-                  <h5 className="listTitle">Ingredients</h5>
-                  <li>{recipe.ingredients}</li>
-                </ul>
-                <ul className="measurements">
-                  <h5 className="listTitle">Measurement</h5>
-                  <li>1 Burger</li>
-                </ul>
-              </div>
-              <div className="recipeComments">
-                <p>TEST COMMENTssss </p>
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </div>

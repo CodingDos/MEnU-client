@@ -3,6 +3,8 @@
   justify-content: space-between;
   align-items: center;
   background-color: #00a19b;
+  box-shadow: black 1px 1px 1px 1px;
+  margin-bottom: 0.5%;
 }
 
 .landingNav {
@@ -24,6 +26,7 @@
   font-style: normal;
   font-size: 20px;
   padding: 10px;
+  width: 8%;
 }
 
 .navTitles {
@@ -35,6 +38,34 @@
   font-style: normal;
   text-decoration: none;
   font-size: 50px;
-  text-shadow: white 2px 2px; /* 2nd Version */
- 
+  text-shadow: white 2px 2px; /* 2nd version */
+}
+.navTitles:hover {
+  background-color: #f45e56e1;
+  padding: 15px;
+  border-radius: 5%;
+}
+
+@media (max-width: 700px) {
+  .signOutButton {
+    font-size: 9px;
+    height: 30px;
+    margin-left: 5px;
+    background-color: #f45e56ca;
+    border-radius: 2px;
+    padding: 0px;
+  }
+}
+
+@media (max-width: 700px) {
+  .navTitles {
+    font-size: 35px;
+    font-weight: 300;
+    text-shadow: black 2px 2px;
+    background-color: rgba(255, 255, 255, 0.454);
+    border-radius: 10px;
+    color: #ffffff;
+    padding: 2%;
+    box-shadow: black 1px 1px;
+  }
 }
