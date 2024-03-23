@@ -5,7 +5,6 @@
   font-family: "Kalam", cursive;
   text-shadow: white 2px 2px 2px 2px;
   overflow-y: auto;
- 
 }
 
 .recipe {
@@ -30,25 +29,15 @@
 }
 
 .container::-webkit-scrollbar {
-    width: 16px;
-    height: 16px;
-  }
-  
- .container::-webkit-scrollbar-thumb {
-    background-color: #f45e5600;
-    -webkit-box-shadow: inset 0px 0px 0 rgb(0, 0, 0),
-      inset 0 0px 0 rgba(0, 0, 0, 0);
-  }
+  width: 16px;
+  height: 16px;
+}
 
-
-
-
-
-
-
-
-
-
+.container::-webkit-scrollbar-thumb {
+  background-color: #f45e5600;
+  -webkit-box-shadow: inset 0px 0px 0 rgb(0, 0, 0),
+    inset 0 0px 0 rgba(0, 0, 0, 0);
+}
 
 .recipeFeed {
   display: flex;
@@ -145,13 +134,11 @@ li {
   justify-content: space-between;
 }
 
-.deleteButton{
-    background-color: #f45e567d;
-    border-radius: 10px;
-    color: white;
-    margin-bottom: 10px;
-    font-weight: 400;
-    font-style: normal;
-
-
+.deleteButton {
+  background-color: #f45e567d;
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-style: normal;
 }
