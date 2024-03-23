@@ -41,6 +41,7 @@ function Home({ user }) {
     <div>
       <div className="container">
         <SearchRecipe />
+        {/* HOLA */}
 
         <div className="recipeFeed">
           {recipes.length > 0 &&
