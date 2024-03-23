@@ -35,3 +35,8 @@
     font-size: 20px;
     padding: 10px;
 }
+
+.searchRecipeModalHeader{
+    display: flex;
+    justify-content: end;
+}

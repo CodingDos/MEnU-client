@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getRecipes } from "../services/recipes.js";
 import Modal from "react-modal";
 import "../styles/SearchRecipe.css";
 

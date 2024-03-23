@@ -40,8 +40,7 @@ function Home({ user }) {
   return (
     <div>
       <div className="container">
-        <SearchRecipe  />
-        
+        <SearchRecipe />
 
         <div className="recipeFeed">
           {recipes.length > 0 &&
@@ -86,17 +85,14 @@ function Home({ user }) {
                     <li>{recipe.instructions}</li>
                   </ol>
                 </div>
-
                 <button
                   className="modalButton"
                   onClick={() => openModal(recipe._id)}
                 >
                   Add a Comment!
                 </button>
-
                 <ViewComments />
                 {/* comments not being pulled from the db */}
-
                 <div>
                   <Modal
                     isOpen={currentRecipeId === recipe._id}
@@ -110,14 +106,17 @@ function Home({ user }) {
                     </div>
                     <Comments
                       recipeId={currentRecipeId}
-                      userId={user.id}
+                      userId={user.Id}
                       comment={comment}
                       setComment={setComments}
                       onRequestClose={closeModal}
                     />
                   </Modal>
                 </div>
-                {user && user.id === recipe.userId && (
+                {console.log(recipe.userId)}
+                {console.log("User:", user.id)}
+                {console.log("Recipe:", recipe.userId._id)}
+                {user.id === recipe.userId._id && (
                   <button className="deleteButton">Delete Recipe</button>
                 )}
               </div>
