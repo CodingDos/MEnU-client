@@ -10,8 +10,8 @@ const DeleteButton = (props) => {
 
   useEffect(() => {
     const fetchRecipe = async () => {
-      const oneRecipe = await getRecipeById(id);
-      setOneRecipe(oneRecipe);
+      const fetchedRecipe = await getRecipeById(id);
+      setOneRecipe(fetchedRecipe);
       setLoaded(true);
     };
     fetchRecipe();
@@ -23,10 +23,10 @@ const DeleteButton = (props) => {
 
   return (
     <div>
-      {console.log("Recipe:", recipe._id)}
+      {console.log("Recipe:", recipe)}
       {user.id === recipe.userId._id && (
         <button
-          onClick={() => deleteRecipe(recipe._id)}
+          onClick={() => deleteRecipe(oneRecipe.id)}
           className="deleteButton"
         >
           Delete Recipe
