@@ -35,7 +35,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing setUser={setUser}/>} />
         <Route path="/home" element={<Home  user={user}/>} />
-        <Route path="/db" element={<Dashboard />} />
+        <Route path="/db" element={<Dashboard user={user}/>} />
       </Routes>
     </div>
   );

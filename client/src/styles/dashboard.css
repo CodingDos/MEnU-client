@@ -30,18 +30,21 @@
 }
 
 .db_recipe_card {
-  background-color: rgb(245, 242, 237);
-  width: 35%;
-  height: 80%;
-  margin-left: 50px;
-  margin-top: 50px;
-  font-family: "Kalam", cursive;
-  font-size: 45px;
-  text-align: center;
-  padding-top: 20px;
-  background-image: url("../assets/Burger.jpg");
+    background-color: rgb(245, 242, 237);
+    width: 35%;
+    height: 80%;
+    margin-left: 50px;
+    margin-top: 50px;
+    font-family: "Kalam", cursive;
+    font-size: 45px;
+    text-align: center;
+    padding-top: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 5px 5px 5px #00000080;
+}
 
-  background-position: center;
-  background-repeat: no-repeat;
-  box-shadow: 5px 5px 5px #00000080;
+.recipe_img img{
+    width: 50%;
+    height: 50%;
 }
