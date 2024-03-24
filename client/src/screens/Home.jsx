@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { getRecipes } from "../services/recipes.js";
+import { deleteRecipe, getRecipes } from "../services/recipes.js";
 import { getCommentById } from "../services/comments.js";
 import Comments from "../components/AddCommentModal.jsx";
 import ViewComments from "../components/ViewComments.jsx";
 import SearchRecipe from "../components/SearchRecipe.jsx";
+import DeleteButton from "../components/DeleteButton.jsx";
 import icon from "../assets/userIcon.jpg";
 import Modal from "react-modal";
 import "../styles/Home.css";
@@ -114,12 +115,7 @@ function Home({ user }) {
                     />
                   </Modal>
                 </div>
-                {console.log(recipe.userId)}
-                {console.log("User:", user.id)}
-                {console.log("Recipe:", recipe.userId._id)}
-                {user.id === recipe.userId._id && (
-                  <button className="deleteButton">Delete Recipe</button>
-                )}
+                <DeleteButton user={user} recipe={recipe} />
               </div>
             ))}
         </div>
