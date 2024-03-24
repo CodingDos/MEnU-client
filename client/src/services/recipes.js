@@ -21,7 +21,7 @@ export const getRecipeById = async (id) => {
 
 export const createRecipe = async (recipeData) => {
   try {
-    const response = await api.post(`/recipes/`, recipeData);
+    const response = await api.post(`/recipe/create`, recipeData);
     return response.data;
   } catch (error) {
     console.error("Error", error);
@@ -30,7 +30,7 @@ export const createRecipe = async (recipeData) => {
 
 export const editRecipe = async (id, recipeData) => {
   try {
-    const response = await api.put(`/recipe/${id}`, recipeData);
+    const response = await api.put(`/recipe/edit/${id}`, recipeData);
     return response.data;
   } catch (error) {
     console.error("Error", error);
@@ -39,7 +39,7 @@ export const editRecipe = async (id, recipeData) => {
 
 export const deleteRecipe = async (id) => {
   try {
-    const response = await api.delete(`recipe/delete/${id}`);
+    const response = await api.delete(`/recipe/delete/${id}`);
     return response.data;
   } catch (error) {
     console.error("Error", error);

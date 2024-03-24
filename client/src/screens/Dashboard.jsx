@@ -8,9 +8,7 @@ import '../styles/dashboard.css'
 
 
 function Dashboard( {user} ) {
-  console.log(user)
   const [toggle, setToggle] = useState(false)
-  // uses endpoint 
   const [recipes, setRecipes] = useState([])
   const [showModal, setShowModal] = useState(false)
 
@@ -42,7 +40,7 @@ function Dashboard( {user} ) {
     try {
       await createRecipe(recipeForm)
       setShowModal(false);
-      setToggle(prev => !prev);
+      setToggle(true);
     } catch (error) {
       console.error("Error creating Recipes", error)
     }
@@ -98,10 +96,24 @@ function closeModal() {
   setShowModal(false);
 }
 
+//USER EDIT SECTION
+const [showUserModal, setShowUserModal] = useState(false)
+
+function openUserModal() {
+  setShowUserModal(true);
+}
+function closeUserModal() {
+  setShowUserModal(false);
+}
+
+
+
+
+
   return (
     <div>
         <div className='dashboard_title'>
-          <p>WELCOME {user.username}</p>
+          <p>WELCOME {user?.firstName || "Loading..."} {user?.lastName || "Loading..."}</p>
         </div>
         <div className='recipe_photos'>
           {recipes?.map(recipe => (
@@ -133,7 +145,17 @@ function closeModal() {
             </div>
           ))}
         </div>
-      <div className='user_profile'></div>
+      <div className='user_profile'>
+        <div className="userImg">{user?.username || "Loading..."}</div>
+        <div className="userImg">{user?.img || "Loading..."}</div>
+        <div className="userImg">{user?.description || "Loading..."}</div>
+      </div>
+      <div className="userEdit">
+      <button onClick={openUserModal}>Edit Personal Info</button>
+      <Modal isOpen={showModal} onRequestClose={closeUserModal} contentLabel="Example Modal">
+        
+      </Modal>
+      </div>
       <button onClick={openModal}>Add Recipe</button>
         <Modal isOpen={showModal} onRequestClose={closeModal} contentLabel="Example Modal">
         <button onClick={() => setShowModal(false)}>
