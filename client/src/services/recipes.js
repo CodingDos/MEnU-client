@@ -12,7 +12,7 @@ export const getRecipes = async () => {
 
 export const getRecipeById = async (id) => {
   try {
-    const response = await api.get(`/recipes/id/${id}`);
+    const response = await api.get(`/recipe/${id}`);
     return response.data;
   } catch (error) {
     console.error("Error Getting the Recipe:", error);
@@ -39,7 +39,7 @@ export const editRecipe = async (id, recipeData) => {
 
 export const deleteRecipe = async (id) => {
   try {
-    const response = await api.delete(`/recipe/${id}`);
+    const response = await api.delete(`recipe/delete/${id}`);
     return response.data;
   } catch (error) {
     console.error("Error", error);
