@@ -3,11 +3,13 @@ import { useState, useEffect } from "react"
 import Modal from "react-modal";
 // import { getRecipes, createRecipe, editRecipe, deleteRecipe } from '../services/recipes.js';
 import { getRecipes, createRecipe } from '../services/recipes.js';
+import { editUser } from "../services/users.js"
 import '../styles/dashboard.css'
 
 
 
 function Dashboard( {user} ) {
+  console.log(user)
   const [toggle, setToggle] = useState(false)
   const [recipes, setRecipes] = useState([])
   const [showModal, setShowModal] = useState(false)
@@ -15,32 +17,36 @@ function Dashboard( {user} ) {
   // This should fetch all recipes, need to make it so it only pulls recipes that are for said user.
   const fetchRecipes = async () => {
     try {
-      const allRecipes = await getRecipes()
-      console.log(allRecipes)     
-      const userRecipes = allRecipes.filter((recipe) => recipe.userId && recipe.userId._id === user?.id)
-      const recipesMapped = userRecipes.map(recipe => ({
+      const allRecipes = await getRecipes()    
+      const userRecipes = await allRecipes?.filter((recipe) => recipe.userId && recipe.userId._id === user?.id)
+      console.log(userRecipes)
+      const recipesMapped = await userRecipes.map(recipe => ({
         mealName: recipe.mealName,
         instructions: recipe.instructions,
         image: recipe.image,
         calories: recipe.calories,
         ingredients: recipe.ingredients,
       }));
+      console.log("recipesMapped : ", recipesMapped)
       setRecipes(recipesMapped)
+
     } catch (error) {
       console.error("Error fetching All Recipes", error)
     }
   }
 
   useEffect(() => {
+    if(user?.id){
     fetchRecipes()
-  }, [toggle])
+    }
+  }, [user, toggle])
 
   const handleCreateRecipe = async (e) => {
     e.preventDefault()
     try {
       await createRecipe(recipeForm)
-      setShowModal(false);
-      setToggle(true);
+      setShowModal(false)
+      setToggle(true)
     } catch (error) {
       console.error("Error creating Recipes", error)
     }
@@ -89,27 +95,51 @@ function ingredientHandleChange(e) {
 }
 //MODAL state change for open and closing
 function openModal() {
-  setShowModal(true);
+  setShowModal(true)
 }
 
 function closeModal() {
-  setShowModal(false);
+  setShowModal(false)
 }
 
 //USER EDIT SECTION
+//modal functionality
 const [showUserModal, setShowUserModal] = useState(false)
 
 function openUserModal() {
-  setShowUserModal(true);
+  setShowUserModal(true)
 }
 function closeUserModal() {
-  setShowUserModal(false);
+  setShowUserModal(false)
 }
-
-
-
-
-
+//form setup for modal
+const [editUserForm, setEditUserForm] = useState({
+  username: user?.username || "",
+  email: user?.email || "",
+  description: user?.description || "",
+  img: user?.img || ""
+},)
+//handle change for editUser
+const handleEditUser = (e) => {
+  const { name, value } = e.target
+  setEditUserForm((prev) => ({
+    ...prev, 
+    [name]: value
+  }))
+}
+//handle the submit for editUser
+const handleEditUserSubmit = async (e) => {
+  e.preventDefault()
+  try {
+    const updatedUser = await editUser(user?.id, editUserForm)
+    localStorage.setItem("token", updatedUser.token) 
+    closeUserModal()
+    window.location.reload()
+  } catch (error) {
+    console.error("Error editing user", error)
+  }
+}
+ 
   return (
     <div>
         <div className='dashboard_title'>
@@ -146,14 +176,52 @@ function closeUserModal() {
           ))}
         </div>
       <div className='user_profile'>
-        <div className="userImg">{user?.username || "Loading..."}</div>
+        <div className="userUsername">{user?.username || "Loading..."}</div>
         <div className="userImg">{user?.img || "Loading..."}</div>
-        <div className="userImg">{user?.description || "Loading..."}</div>
+        <div className="userDescription">{user?.description || "Loading..."}</div>
       </div>
       <div className="userEdit">
       <button onClick={openUserModal}>Edit Personal Info</button>
-      <Modal isOpen={showModal} onRequestClose={closeUserModal} contentLabel="Example Modal">
-        
+      <Modal isOpen={showUserModal} onRequestClose={closeUserModal} contentLabel="Example Modal">
+        <form onSubmit={handleEditUserSubmit}>
+          <label>
+            Username: 
+            <input 
+            type="text"
+            name="username"
+            value={editUserForm.username}
+            onChange={handleEditUser} 
+            />
+          </label>
+          <label>
+            Email: 
+            <input 
+            type="text"
+            name="email"
+            value={editUserForm.email}
+            onChange={handleEditUser} 
+            />
+          </label>
+          <label>
+            Image: 
+            <input 
+            type="text"
+            name="img"
+            value={editUserForm.img}
+            onChange={handleEditUser} 
+            />
+          </label>
+          <label>
+            Description: 
+            <input 
+            type="text"
+            name="description"
+            value={editUserForm.description}
+            onChange={handleEditUser} 
+            />
+          </label>
+          <button type="submit">Save Changes</button>
+        </form>
       </Modal>
       </div>
       <button onClick={openModal}>Add Recipe</button>
