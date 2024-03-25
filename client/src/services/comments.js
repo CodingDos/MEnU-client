@@ -10,7 +10,7 @@ export const getComments = async () => {
   }
 };
 
-export const getCommentById = async (id, recipeId) => {
+export const getCommentById = async (recipeId) => {
   try {
     const response = await api.get(`/comment/${recipeId}`);
     return response.data;
