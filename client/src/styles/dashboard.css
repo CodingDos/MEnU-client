@@ -20,8 +20,9 @@
 }
 
 .recipe_photos {
+    display: flex;
+    flex-direction: row;
   background-color: white;
-  height: 500px;
   width: 70%;
   margin-top: 20px;
   float: right;
@@ -45,6 +46,15 @@
 }
 
 .recipe_img img{
+    width: 100px;
+    height: 100px;
+}
+
+.userImg img {
     width: 50%;
     height: 50%;
+}
+
+.root_recipe{
+    padding: 5%;
 }
