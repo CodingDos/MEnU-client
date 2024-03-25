@@ -1,5 +1,5 @@
 import api from "./apiConfing.js";
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 
 export const register = async (userData) => {
   try {
@@ -56,14 +56,16 @@ export const verify = async () => {
 
 
 // -- Steven is routing edit user in backend --
-//  export const editUser = async (id , userData) => {
-//     try{
-//      const response = await api.put(`/users/${id}`, userData)
-//      return response.data
-//     } catch(error){
-//      console.error("Error", error)
-//     }
-//  }
+ export const editUser = async (id , userData) => {
+    try{
+      const response = await api.put(`/user/edit/${id}`, userData)
+      return response.data
+    } catch(error){
+      console.error("Error editing user", error)
+      const errorMessage = error.response?.data?.message || "Failed to edit user due to unexpected error";
+      throw new Error(errorMessage)
+    }
+ }
 
 // -- If we want a delete account functionality --
 //  export const deleteUser = async (id) => {
@@ -83,3 +85,12 @@ export const getUsers = async () => {
     console.error("Error Getting all Users:", error);
   }
 };
+
+export const getUser = async (id) => {
+  try {
+    const response = await api.get(`/user/${id}`)
+    return response.data
+  } catch (error) {
+    console.error("Error getting user by ID", error);
+  }
+}
