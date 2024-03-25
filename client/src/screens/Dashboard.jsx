@@ -187,9 +187,10 @@ const handleDelete = async (recipeId) => {
   return (
     <div>
         <div className='dashboard_title'>
-            <p>WELCOME {userInfo?.firstName || "Loading..."} {userInfo?.lastName || "Loading..."}</p> 
+            <p className='userNameTitle'>WELCOME {userInfo?.firstName || "Loading..."} {userInfo?.lastName || "Loading..."}</p> 
         </div>
         <div className='recipe_photos'>
+          <div className='recipeCardUser'>
           {recipes?.map(recipe => (
             <div className="root_recipe">
               <div className="recipe_name">
@@ -216,9 +217,11 @@ const handleDelete = async (recipeId) => {
                   ))}
                 </ul>
               </div>
-              <button onClick={() => handleDelete(recipe.recipeId)}>Delete Recipe</button>
+              <button className='dbButton' onClick={() => handleDelete(recipe.recipeId)}>Delete Recipe</button>
             </div>
+            
           ))}
+          </div>
         </div>  
       <div className='user_profile'>
         <div className="userUsername">{userInfo?.username || "Loading..."}</div>
@@ -226,7 +229,7 @@ const handleDelete = async (recipeId) => {
         <div className="userDescription">{userInfo?.description || "Loading..."}</div>
       </div>
       <div className="userEdit">
-      <button onClick={openUserModal}>Edit Personal Info</button>
+      <button className='dbButton' onClick={openUserModal}>Edit Personal Info</button>
       <Modal isOpen={showUserModal} onRequestClose={closeUserModal} contentLabel="Example Modal">
         <form onSubmit={handleEditUserSubmit}>
           <label>
@@ -265,11 +268,11 @@ const handleDelete = async (recipeId) => {
             onChange={handleEditUser} 
             />
           </label>
-          <button type="submit">Save Changes</button>
+          <button className='dbButton' type="submit">Save Changes</button>
         </form>
       </Modal>
       </div>
-      <button onClick={openModal}>Add Recipe</button>
+      <button className='dbButton' onClick={openModal}>Add Recipe</button>
         <Modal isOpen={showModal} onRequestClose={closeModal} contentLabel="Example Modal">
         <button onClick={() => setShowModal(false)}>
             Close
